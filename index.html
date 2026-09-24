@@ -1,304 +1,339 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Sophia ❤️</title>
 
-    <title>Para minha maninha 💗</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    body {
+      overflow: hidden;
+      -webkit-tap-highlight-color: transparent;
+      background: #05000a;
+      font-family: Georgia, 'Times New Roman', serif;
+      color: white;
+    }
 
-        body {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            font-family: Arial, Helvetica, sans-serif;
+    /* Fundo */
+    .background {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at center, #310d2e 0%, #120315 40%, #05000a 100%);
+    }
 
-            background:
-                radial-gradient(circle at top left, #ffd6e7, transparent 35%),
-                radial-gradient(circle at bottom right, #d9c7ff, transparent 35%),
-                linear-gradient(135deg, #fff0f6, #eee5ff);
+    /* Estrelas */
+    .stars {
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(2px 2px at 20% 30%, white, transparent),
+        radial-gradient(1px 1px at 70% 20%, white, transparent),
+        radial-gradient(2px 2px at 80% 70%, white, transparent),
+        radial-gradient(1px 1px at 30% 80%, white, transparent),
+        radial-gradient(2px 2px at 50% 50%, white, transparent),
+        radial-gradient(1px 1px at 90% 40%, white, transparent),
+        radial-gradient(1px 1px at 10% 60%, white, transparent);
+      background-size: 250px 250px;
+      opacity: 0.6;
+      animation: stars 8s linear infinite;
+    }
 
-            overflow: hidden;
-        }
+    @keyframes stars {
+      from { transform: translateY(0); }
+      to { transform: translateY(-80px); }
+    }
 
-        /* Elementos decorativos */
+    /* Tela inicial */
+    .intro {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: #05000a;
+      transition: opacity 2s ease;
+    }
 
-        .decoracao {
-            position: fixed;
-            font-size: 25px;
-            opacity: 0.7;
-            animation: flutuar 5s ease-in-out infinite;
-            pointer-events: none;
-        }
+    .intro p {
+      font-size: 18px;
+      letter-spacing: 4px;
+      color: #e8b7d8;
+      margin-bottom: 25px;
+      text-align: center;
+    }
 
-        .d1 {
-            top: 10%;
-            left: 8%;
-        }
+    .start {
+      border: 1px solid rgba(255, 150, 210, .6);
+      background: rgba(255, 100, 180, .08);
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-size: 16px;
+      cursor: pointer;
+      letter-spacing: 2px;
+      transition: .4s;
+      box-shadow: 0 0 25px rgba(255, 80, 180, .15);
+    }
 
-        .d2 {
-            top: 20%;
-            right: 10%;
-            animation-delay: 1s;
-        }
+    .start:hover {
+      background: rgba(255, 100, 180, .25);
+      box-shadow: 0 0 40px rgba(255, 80, 180, .4);
+      transform: scale(1.05);
+    }
 
-        .d3 {
-            bottom: 15%;
-            left: 12%;
-            animation-delay: 2s;
-        }
+    /* Conteúdo */
+    .content {
+      position: fixed;
+      inset: 0;
+      z-index: 5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      opacity: 0;
+      transition: opacity 2s ease;
+      text-align: center;
+      padding: 25px;
+    }
 
-        .d4 {
-            bottom: 10%;
-            right: 8%;
-            animation-delay: 3s;
-        }
+    .small-text {
+      color: #e8b7d8;
+      font-size: 18px;
+      letter-spacing: 5px;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: appear 2s forwards;
+      animation-delay: 1s;
+    }
 
-        @keyframes flutuar {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
+    .love {
+      font-family: Georgia, serif;
+      font-size: clamp(55px, 13vw, 140px);
+      letter-spacing: 8px;
+      color: #fff;
+      text-shadow:
+        0 0 10px #ff72c0,
+        0 0 30px #ff3da8,
+        0 0 70px #ff168f,
+        0 0 120px #ff168f;
+      opacity: 0;
+      transform: scale(.6);
+      animation: loveAppear 3s ease forwards;
+      animation-delay: 2s;
+    }
 
-            50% {
-                transform: translateY(-20px) rotate(8deg);
-            }
-        }
+    .heart {
+      display: inline-block;
+      color: #ff4cad;
+      animation: heartbeat 1.4s infinite;
+    }
 
-        /* Cartão */
+    .message {
+      max-width: 600px;
+      margin-top: 35px;
+      font-size: 20px;
+      line-height: 1.8;
+      color: #f7ddeb;
+      opacity: 0;
+      animation: appear 2.5s forwards;
+      animation-delay: 5s;
+    }
 
-        .cartao {
-            width: 100%;
-            max-width: 500px;
-            padding: 45px 30px;
+    .signature {
+      margin-top: 25px;
+      font-size: 17px;
+      color: #ff9dd2;
+      opacity: 0;
+      animation: appear 2s forwards;
+      animation-delay: 6.5s;
+    }
 
-            text-align: center;
+    @keyframes loveAppear {
+      0% {
+        opacity: 0;
+        transform: scale(.6);
+        filter: blur(15px);
+      }
 
-            background: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(15px);
+      60% {
+        opacity: 1;
+        transform: scale(1.08);
+        filter: blur(0);
+      }
 
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            border-radius: 30px;
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
 
-            box-shadow:
-                0 20px 60px rgba(130, 90, 150, 0.2);
+    @keyframes appear {
+      to {
+        opacity: 1;
+      }
+    }
 
-            animation: aparecer 1s ease;
-        }
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+      }
 
-        @keyframes aparecer {
-            from {
-                opacity: 0;
-                transform: translateY(30px) scale(0.95);
-            }
+      50% {
+        transform: scale(1.25);
+      }
+    }
 
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
+    /* Corações flutuantes */
+    .floating-heart {
+      position: fixed;
+      bottom: -50px;
+      color: #ff5db8;
+      font-size: 20px;
+      pointer-events: none;
+      animation: floatUp linear forwards;
+      opacity: 0;
+      z-index: 2;
+      text-shadow: 0 0 15px #ff3da8;
+    }
 
-        .coracao {
-            font-size: 55px;
-            margin-bottom: 15px;
-            animation: bater 1.5s infinite;
-        }
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
 
-        @keyframes bater {
-            0%, 100% {
-                transform: scale(1);
-            }
+      15% {
+        opacity: .8;
+      }
 
-            50% {
-                transform: scale(1.15);
-            }
-        }
+      85% {
+        opacity: .7;
+      }
 
-        h1 {
-            color: #8f4b72;
-            font-size: 38px;
-            margin-bottom: 15px;
-        }
+      100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
 
-        .linha {
-            width: 70px;
-            height: 4px;
-            margin: 0 auto 25px;
+    /* Responsivo */
+    @media (max-width: 600px) {
+      .small-text {
+        font-size: 14px;
+        letter-spacing: 3px;
+      }
 
-            border-radius: 10px;
-            background: linear-gradient(90deg, #ff8fbd, #a98cff);
-        }
+      .love {
+        letter-spacing: 3px;
+      }
 
-        .texto {
-            color: #59475b;
-            font-size: 17px;
-            line-height: 1.7;
-            margin-bottom: 25px;
-        }
-
-        /* Botão */
-
-        button {
-            border: none;
-            padding: 15px 28px;
-
-            border-radius: 50px;
-
-            background: linear-gradient(135deg, #ff82b5, #a987ff);
-
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-
-            cursor: pointer;
-
-            box-shadow: 0 10px 25px rgba(170, 100, 180, 0.25);
-
-            transition: 0.3s;
-        }
-
-        button:hover {
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 15px 30px rgba(170, 100, 180, 0.35);
-        }
-
-        button:active {
-            transform: scale(0.96);
-        }
-
-        /* Mensagem escondida */
-
-        #mensagem {
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-
-            transition: all 0.8s ease;
-
-            color: #684f6c;
-            font-size: 16px;
-            line-height: 1.7;
-        }
-
-        #mensagem.mostrar {
-            max-height: 300px;
-            opacity: 1;
-            margin-top: 25px;
-        }
-
-        .assinatura {
-            margin-top: 20px;
-            font-weight: bold;
-            color: #9a5c80;
-        }
-
-        /* Celular */
-
-        @media (max-width: 500px) {
-
-            body {
-                padding: 15px;
-            }
-
-            .cartao {
-                padding: 35px 22px;
-                border-radius: 25px;
-            }
-
-            h1 {
-                font-size: 31px;
-            }
-
-            .texto {
-                font-size: 16px;
-            }
-
-            .coracao {
-                font-size: 48px;
-            }
-
-            .decoracao {
-                font-size: 20px;
-            }
-        }
-    </style>
+      .message {
+        font-size: 17px;
+        line-height: 1.7;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- Decorações -->
+  <div class="background"></div>
+  <div class="stars"></div>
 
-    <div class="decoracao d1">🌸</div>
-    <div class="decoracao d2">💗</div>
-    <div class="decoracao d3">✨</div>
-    <div class="decoracao d4">🌷</div>
+  <!-- Tela inicial -->
+  <div class="intro" id="intro">
+    <p>Eu tenho uma coisa pra te dizer...</p>
+    <button class="start" id="startButton" type="button">Clique aqui ❤️</button>
+  </div>
 
+  <!-- Conteúdo principal -->
+  <div class="content" id="content">
 
-    <!-- Cartão principal -->
+    <div class="small-text">SOPHIA...</div>
 
-    <main class="cartao">
+    <div class="love">
+      EU TE <span class="heart">♥</span> AMO
+    </div>
 
-        <div class="coracao">
-            💗
-        </div>
+    <div class="message">
+      Sophia, eu só queria que você soubesse o quanto você é
+      especial para mim. ❤️<br><br>
 
-        <h1>
-            Para minha maninha
-        </h1>
+      Talvez eu não consiga explicar tudo em palavras,
+      mas existe uma coisa que eu tenho certeza:
+      <strong>eu amo você.</strong><br><br>
 
-        <div class="linha"></div>
+      E espero que nunca se esqueça disso. ✨
+    </div>
 
-        <p class="texto">
-            Só queria deixar aqui uma pequena lembrança
-            para dizer o quanto você é especial para mim. 🥹
-            <br><br>
-            Mesmo quando a gente fica sem se falar dias,
-            você sempre vai ser uma pessoa
-            muito importante para mim. ❤️
-        </p>
+    <div class="signature">
+      Com todo meu carinho, para você. ❤️
+    </div>
 
-        <button onclick="mostrarMensagem()">
-            Clique aqui 💌
-        </button>
+  </div>
 
-        <div id="mensagem">
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const startButton = document.getElementById("startButton");
 
-            <p>
-                Espero que você nunca se esqueça que pode
-                contar comigo para qualquer coisa.
-                <br><br>
+      if (startButton) {
+        startButton.addEventListener("click", start);
+        startButton.addEventListener("touchend", function (event) {
+          event.preventDefault();
+          start();
+        }, { passive: false });
+      }
+    });
 
-                Vou estar aqui para rir, conversar, ajudar,
-                encher o saco e, principalmente, cuidar de você. 🫶
-            </p>
+    let started = false;
 
-            <div class="assinatura">
-                Te amo, maninha! 💗
-            </div>
+    function start() {
+      // Evita que o toque e o clique executem a animação duas vezes.
+      if (started) return;
+      started = true;
 
-        </div>
+      const intro = document.getElementById("intro");
+      const content = document.getElementById("content");
 
-    </main>
+      intro.style.opacity = "0";
 
+      setTimeout(() => {
+        intro.style.display = "none";
+        content.style.opacity = "1";
+      }, 2000);
 
-    <script>
+      // Começa os corações flutuantes.
+      setInterval(createHeart, 450);
+    }
 
-        function mostrarMensagem() {
+    function createHeart() {
+      const heart = document.createElement("div");
 
-            const mensagem = document.getElementById("mensagem");
+      heart.classList.add("floating-heart");
+      heart.textContent = Math.random() > 0.5 ? "♥" : "♡";
 
-            mensagem.classList.toggle("mostrar");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (12 + Math.random() * 25) + "px";
 
-        }
+      const duration = 5 + Math.random() * 6;
+      heart.style.animationDuration = duration + "s";
 
-    </script>
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, duration * 1000);
+    }
+  </script>
 
 </body>
 </html>
